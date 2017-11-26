@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/cardview_margin"
+    android:clickable="true"
+    android:foreground="?selectableItemBackground"
+    android:padding="@dimen/cardview_radius"
+    app:cardCornerRadius="@dimen/cardview_default_radius"
+    app:cardElevation="@dimen/cardview_elevation"
+    android:descendantFocusability="blocksDescendants"
+    app:cardPreventCornerOverlap="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/cardview_radius"
+            android:orientation="horizontal">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/joke_circleImage"
+                android:layout_width="@dimen/tab_height"
+                android:layout_height="@dimen/tab_height"
+                android:background="@drawable/ic_img_default" />
+
+            <TextView
+                android:id="@+id/joke_username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/dp_10" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/joke_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/cardview_radius"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/joke_category_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/joke_text_default_background"
+            android:layout_marginLeft="@dimen/cardview_radius"
+            android:layout_marginBottom="@dimen/cardview_radius"
+            android:textColor="@color/joke_text_category_name_color" />
+    </LinearLayout>
+</android.support.v7.widget.CardView>

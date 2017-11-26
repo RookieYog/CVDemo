@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dp_40"
+    android:background="@color/colorWhite"
+    android:orientation="horizontal"
+    android:padding="@dimen/dp_4">
+
+    <EditText
+        android:id="@+id/edit_danmu"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@drawable/danmu_edit_backgound"
+        android:hint="@string/hint_danmu"
+        android:imeOptions="actionDone"
+        android:padding="@dimen/cardview_elevation"
+        android:textColor="@color/black"
+        android:textSize="@dimen/sp_14" />
+
+    <Button
+        android:id="@+id/btn_send"
+        android:layout_width="@dimen/dp_40"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/cardview_radius"
+        android:background="@drawable/danmu_send_backgound"
+        android:backgroundTint="@color/colorPrimary"
+        android:text="@string/send_message"
+        android:textColor="@color/colorWhite"
+        android:textSize="@dimen/sp_14" />
+
+</LinearLayout>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_portrait"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/dp_10">
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/iv_back_portrait"
+        android:layout_width="@dimen/dp_40"
+        android:layout_height="@dimen/dp_40"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/background_iv_circle"
+        android:padding="8dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/selector_btn_back" />
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/iv_danmu_visible_portrait"
+        android:layout_width="@dimen/dp_40"
+        android:layout_height="@dimen/dp_40"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/background_iv_circle"
+        android:padding="8dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_danmu_off_normal" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/iv_fullscreen_portrait"
+        android:layout_width="@dimen/dp_40"
+        android:layout_height="@dimen/dp_40"
+        android:padding="8dp"
+        android:scaleType="centerCrop"
+        android:background="@drawable/background_iv_circle"
+        android:src="@drawable/selector_btn_fullscreen"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true" />
+
+</RelativeLayout>
