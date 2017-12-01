@@ -123,7 +123,7 @@ public class LivePlayActivity extends BaseActivity<ILivePlayView, LivePlayPresen
     private Handler controllerHandler;
     private static final int HANDLER_HIDE_CONTROLLER = 100;//隐藏MediaController
     private static final int HANDLER_CONTROLLER_DURATION = 5 * 1000;//MediaController显示时间
-    private FrameLayout mExCachangeLayout;
+    private CardView mExCachangeLayout;
     private View mUerRelativeLayout;
     private View mLiveBottom;
     private static final String KEY = "key";
@@ -148,7 +148,7 @@ public class LivePlayActivity extends BaseActivity<ILivePlayView, LivePlayPresen
             mGameType = getIntent().getStringExtra(GAME_TYPE);
         }
 
-        mExCachangeLayout = (FrameLayout) this.findViewById(R.id.view_top);
+        mExCachangeLayout = (CardView) this.findViewById(R.id.view_top);
         mSurfaceView = (SurfaceView) this.findViewById(R.id.surfaceview);
         mDanmakuView = (DanmakuView) this.findViewById(R.id.danmuview);
 //        thumbImageView = (ImageView) this.findViewById(thumbImageView);
