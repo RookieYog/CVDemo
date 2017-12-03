@@ -21,6 +21,7 @@ import com.byl.qrobotor.bean.LiveListItemBean;
 import com.byl.qrobotor.http.LiveAPI;
 import com.byl.qrobotor.http.NewsAPI;
 import com.byl.qrobotor.presenter.LiveListPresenterImpl;
+import com.byl.qrobotor.util.LogUtil;
 import com.byl.qrobotor.util.ToastUtil;
 import com.byl.qrobotor.view.ILiveListView;
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -135,11 +136,6 @@ public class LiveListFragment extends BaseFragment<ILiveListView, LiveListPresen
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
         mRecyclerView.addOnItemTouchListener(new OnItemClickListener() {
             @Override
             public void onSimpleItemClick(BaseQuickAdapter adapter, View view, int position) {
@@ -164,6 +160,11 @@ public class LiveListFragment extends BaseFragment<ILiveListView, LiveListPresen
 //                transaction.commitAllowingStateLoss();
             }
         });
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
     }
 
     @Override
