@@ -27,7 +27,7 @@
         android:background="@drawable/background_iv_circle"
         android:padding="8dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/ic_danmu_off_normal" />
+        android:src="@drawable/ic_danmu_on_normal" />
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/iv_fullscreen_portrait"
