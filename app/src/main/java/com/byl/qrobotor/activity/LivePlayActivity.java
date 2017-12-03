@@ -105,7 +105,7 @@ public class LivePlayActivity extends BaseActivity<ILivePlayView, LivePlayPresen
     private TextView mLiveTypeTv;
     private TextView mGameTypeTv;
 
-    private boolean DanmaKuFlag = false;
+    private boolean DanmaKuFlag = true;
     private boolean isSurfaceViewInit = false;         //SurfaceView初始化标志位
     private boolean isVideoPrepared = false;         //Video加载标志位，用于显示隐藏ProgreeBar
     private boolean isPause = false;         //直播暂停标志位
@@ -409,13 +409,14 @@ public class LivePlayActivity extends BaseActivity<ILivePlayView, LivePlayPresen
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
-        mProgressBar.setVisibility(View.VISIBLE);
-        mProgressBar.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                mProgressBar.setVisibility(View.GONE);
-            }
-        },2000);
+        mProgressBar.setVisibility(isVideoPrepared ? View.GONE : View.VISIBLE);
+//        mProgressBar.setVisibility(View.VISIBLE);
+//        mProgressBar.postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                mProgressBar.setVisibility(View.GONE);
+//            }
+//        },2000);
     }
 
     @Override
@@ -444,8 +445,10 @@ public class LivePlayActivity extends BaseActivity<ILivePlayView, LivePlayPresen
 
     private void clearAll() {
         if (mMediaPlayer != null) {
-            mMediaPlayer.pause();
-            mMediaPlayer.stop();
+            if (mMediaPlayer.isPlaying()){
+                mMediaPlayer.pause();
+                mMediaPlayer.stop();
+            }
             mMediaPlayer.release();
             mMediaPlayer = null;
 //            AudioManager audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
@@ -625,8 +628,8 @@ public class LivePlayActivity extends BaseActivity<ILivePlayView, LivePlayPresen
         BaseDanmaku danmaku = mDanmakuContext.mDanmakuFactory.createDanmaku(BaseDanmaku.TYPE_SCROLL_RL);
         danmaku.text = danmuBean.getData().getContent();
         danmaku.padding = 5;
-        danmaku.textSize = 18.0F;
-        danmaku.textColor = Color.WHITE;
+        danmaku.textSize = 32.0F;
+        danmaku.textColor = Color.RED;
         danmaku.setTime(mDanmakuView.getCurrentTime());
         if (true) {
             danmaku.borderColor = Color.GREEN;
@@ -675,9 +678,7 @@ public class LivePlayActivity extends BaseActivity<ILivePlayView, LivePlayPresen
         mExCachangeLayout.removeView(mDanmakuView);
         mExCachangeLayout.removeView(mViewPortrait);
         mExCachangeLayout.removeView(mViewLandscape);
-//        mExCachangeLayout.removeView(mUerRelativeLayout);
 
-//        ScreenUtils.setPortrait(this);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         isFullscreen = false;
@@ -701,7 +702,6 @@ public class LivePlayActivity extends BaseActivity<ILivePlayView, LivePlayPresen
 
         mLiveBottom.setVisibility(View.VISIBLE);
         mUerRelativeLayout.setVisibility(View.VISIBLE);
-//        mProgressBar.setVisibility(isVideoPrepared == true ? View.GONE : View.VISIBLE);
         mViewLandscape.setVisibility(View.GONE);
         mViewPortrait.setVisibility(View.VISIBLE);
     }
@@ -714,9 +714,7 @@ public class LivePlayActivity extends BaseActivity<ILivePlayView, LivePlayPresen
         mExCachangeLayout.removeView(mDanmakuView);
         mExCachangeLayout.removeView(mViewPortrait);
         mExCachangeLayout.removeView(mViewLandscape);
-//        mExCachangeLayout.removeView(mUerRelativeLayout);
 
-//        ScreenUtils.setLandscape(this);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
         isFullscreen = true;
@@ -726,7 +724,6 @@ public class LivePlayActivity extends BaseActivity<ILivePlayView, LivePlayPresen
 
 
         mExCachangeLayout.addView(mSurfaceView, new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
-//        mExCachangeLayout.addView(thumbImageView, new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,  ViewGroup.LayoutParams.MATCH_PARENT));
         mExCachangeLayout.addView(mProgressBar, new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         mExCachangeLayout.addView(mDanmakuView, new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         mExCachangeLayout.addView(mViewPortrait, new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
@@ -740,10 +737,8 @@ public class LivePlayActivity extends BaseActivity<ILivePlayView, LivePlayPresen
 
         mLiveBottom.setVisibility(View.GONE);
         mUerRelativeLayout.setVisibility(View.GONE);
-//        mProgressBar.setVisibility(isVideoPrepared == true ? View.GONE : View.VISIBLE);
         mViewLandscape.setVisibility(View.VISIBLE);
         mViewPortrait.setVisibility(View.GONE);
-//        mPauseLandscape.setImageResource(isPause ? R.drawable.selector_btn_play : R.drawable.selector_btn_pause);
 
     }
 //
